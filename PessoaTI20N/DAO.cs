@@ -23,25 +23,24 @@ namespace PessoaTI20N
         public DAO() 
         {
             conexao = new MySqlConnection("server=localhost;Database=empresaTI20N;Uid=root;password=");
-            
+
             try
             {
 
                 conexao.Open();//abrir conexao
-                MessageBox.Show("Conectado!");
-                
-            }catch(Exception ex)
-            { 
+
+            }
+            catch (Exception ex)
+            {
                 MessageBox.Show("Algo deu errado!!\n\n" + ex);
             }
             
         }//fim do construtor
 
-        public string Inserir(long cpf, string nome, string telefone, string endereço)
+        public string Inserir(long cpf, string nome, string telefone, string endereco)
         {
 
-            string inserir = $"Insert into pessoa(cpf, nome, telefone, endereço) values" +
-                $"('{cpf}', '{nome}', '{telefone}','{endereço}'";
+            string inserir = $"Insert into pessoa(cpf, nome, telefone, endereço) values ('{cpf}', '{nome}', '{telefone}','{endereco}')";
 
             MySqlCommand sql = new MySqlCommand(inserir, conexao);
             string resultado = sql.ExecuteNonQuery() + "Executado!";
